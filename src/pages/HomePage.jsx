@@ -11,7 +11,7 @@ const HomePage = () => {
         subtitle='Find the React job that fits your skill set!'
       />
       <HomeCards />
-      <JobListings />
+      <JobListings isHome={true} />
       <ViewAllJobs />
     </>
   );
