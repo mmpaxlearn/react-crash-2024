@@ -1,4 +1,3 @@
-import React from 'react'
 
 const Hero = ({ title = "Title place holder", subtitle = "subtitle place holder" }) => {
   return (
