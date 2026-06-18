@@ -1,9 +1,26 @@
-import jobs from "../jobs.json";
+import { useState, useEffect } from "react"; // isEffect - is a side-effect - use to fetch data when the component mounts
 import JobListing from "./JobListing";
 
 const JobListings = ({ isHome = false }) => {
 
-  const jobListings = isHome ? jobs.slice(0, 3) : jobs; // Get the first 3 jobs from the array if isHome is true, otherwise get all jobs
+  const [jobs, setJobs] = useState();
+  const [loading, setLoading] = useState(true); // loading state - to show a loading spinner while fetching data
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch('http://localhost:3001/jobs');
+        const data = await res.json();
+        setJobs(data);
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []);
 
   return (
     <section className="bg-blue-50 px-4 py-10">
@@ -12,9 +29,15 @@ const JobListings = ({ isHome = false }) => {
           {isHome ? "Recent Jobs" : "Browse Jobs"}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {jobListings.map((job) => (
-            <JobListing key={job.id} job={job} />
-          ))}
+          {loading
+            ? (<h2>Loading...</h2>) // Temporary loading state - will be replaced with a spinner component (use react-spinners)
+            : (
+              <>
+                {jobs.map((job) => (
+                  <JobListing key={job.id} job={job} />
+                ))}
+              </>
+            )}
         </div>
       </div>
     </section>
