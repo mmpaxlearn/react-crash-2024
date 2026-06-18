@@ -1,7 +1,6 @@
 import React from "react";
 import jobs from "../jobs.json";
 import JobListing from "./JobListing";
-import { useState } from 'react';
 
 const JobListings = () => {
 
