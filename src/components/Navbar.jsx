@@ -9,20 +9,20 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-indigo-700 border-b border-indigo-500">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
+      <nav className="bg-indigo-700 border-indigo-500 border-b">
+        <div className="mx-auto px-2 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="flex justify-between items-center h-20">
             <div
-              className="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
+              className="flex flex-1 justify-center md:justify-start items-center md:items-stretch"
             >
               {/* Logo */}
-              <NavLink className="flex flex-shrink-0 items-center mr-4" to="/">
+              <NavLink className="flex items-center mr-4 shrink-0" to="/">
                 <img
-                  className="h-10 w-auto"
+                  className="w-auto h-10"
                   src={logo}
                   alt="React Jobs"
                 />
-                <span className="hidden md:block text-white text-2xl font-bold ml-2">
+                <span className="hidden md:block ml-2 font-bold text-white text-2xl">
                   React Jobs
                 </span>
               </NavLink>

@@ -10,10 +10,10 @@ const JobPage = () => {
   return (
     <>
       <section>
-        <div className="container m-auto py-6 px-6">
+        <div className="m-auto px-6 py-6 container">
           <Link
             to="/jobs"
-            className="text-indigo-500 hover:text-indigo-600 flex items-center"
+            className="flex items-center text-indigo-500 hover:text-indigo-600"
           >
             <FaArrowLeft className='mr-2' /> Back to Job Listings
           </Link>
@@ -21,26 +21,26 @@ const JobPage = () => {
       </section>
 
       <section className="bg-indigo-50">
-        <div className="container m-auto py-10 px-6">
-          <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
+        <div className="m-auto px-6 py-10 container">
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-7030 w-full">
             <main>
               <div
-                className="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
+                className="bg-white shadow-md p-6 rounded-lg md:text-left text-center"
               >
-                <div className="text-gray-500 mb-4">{job.type}</div>
-                <h1 className="text-3xl font-bold mb-4">
+                <div className="mb-4 text-gray-500">{job.type}</div>
+                <h1 className="mb-4 font-bold text-3xl">
                   {job.title}
                 </h1>
                 <div
-                  className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
+                  className="flex justify-center md:justify-start mb-4 text-gray-500 align-middle"
                 >
-                  <FaMapMarker className='text-orange-700 mr-1' />
+                  <FaMapMarker className='mr-1 text-orange-700' />
                   <p className="text-orange-700">{job.location}</p>
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                <h3 className="text-indigo-800 text-lg font-bold mb-6">
+              <div className="bg-white shadow-md mt-6 p-6 rounded-lg">
+                <h3 className="mb-6 font-bold text-indigo-800 text-lg">
                   Job Description
                 </h3>
 
@@ -48,7 +48,7 @@ const JobPage = () => {
                   {job.description}
                 </p>
 
-                <h3 className="text-indigo-800 text-lg font-bold mb-2">Salary</h3>
+                <h3 className="mb-2 font-bold text-indigo-800 text-lg">Salary</h3>
 
                 <p className="mb-4">{job.salary}</p>
               </div>
@@ -56,8 +56,8 @@ const JobPage = () => {
 
             {/* <!-- Sidebar --> */}
             <aside>
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold mb-6">Company Info</h3>
+              <div className="bg-white shadow-md p-6 rounded-lg">
+                <h3 className="mb-6 font-bold text-xl">Company Info</h3>
 
                 <h2 className="text-2xl">{job.company.name}</h2>
 
@@ -69,25 +69,25 @@ const JobPage = () => {
 
                 <h3 className="text-xl">Contact Email:</h3>
 
-                <p className="my-2 bg-indigo-100 p-2 font-bold">
+                <p className="bg-indigo-100 my-2 p-2 font-bold">
                   {job.company.contactEmail}
                 </p>
 
                 <h3 className="text-xl">Contact Phone:</h3>
 
-                <p className="my-2 bg-indigo-100 p-2 font-bold">{job.company.contactPhone}</p>
+                <p className="bg-indigo-100 my-2 p-2 font-bold">{job.company.contactPhone}</p>
               </div>
 
               {/* <!-- Manage --> */}
-              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                <h3 className="text-xl font-bold mb-6">Manage Job</h3>
+              <div className="bg-white shadow-md mt-6 p-6 rounded-lg">
+                <h3 className="mb-6 font-bold text-xl">Manage Job</h3>
                 <a
                   href="/add-job.html"
-                  className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                  className="block bg-indigo-500 hover:bg-indigo-600 mt-4 px-4 py-2 rounded-full focus:shadow-outline focus:outline-none w-full font-bold text-white text-center"
                 >Edit Job</a
                 >
                 <button
-                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                  className="block bg-red-500 hover:bg-red-600 mt-4 px-4 py-2 rounded-full focus:shadow-outline focus:outline-none w-full font-bold text-white"
                 >
                   Delete Job
                 </button>
