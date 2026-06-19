@@ -11,8 +11,7 @@ const JobListings = ({ isHome = false }) => {
   useEffect(() => {
     const fetchJobs = async () => {
       // json-server v1.xx uses pagination - _page and _per_page (_limit is deprecated)
-      let apiUrl = isHome
-        ? 'http://localhost:3001/jobs?_page=1&_per_page=3' : 'http://localhost:3001/jobs?_page=1';
+      let apiUrl = isHome ? '/api/jobs?_page=1&_per_page=3' : '/api/jobs?_page=1';
 
       try {
         const res = await fetch(apiUrl);
