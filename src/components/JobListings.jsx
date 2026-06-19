@@ -7,12 +7,18 @@ const JobListings = ({ isHome = false }) => {
   const [jobs, setJobs] = useState();
   const [loading, setLoading] = useState(true); // loading state - to show a loading spinner while fetching data
 
+
   useEffect(() => {
     const fetchJobs = async () => {
+      // json-server v1.xx uses pagination - _page and _per_page (_limit is deprecated)
+      let apiUrl = isHome ? 'http://localhost:3001/jobs?_page=1&_per_page=3' : 'http://localhost:3001/jobs?_page=1';
+
       try {
-        const res = await fetch('http://localhost:3001/jobs');
-        const data = await res.json();
-        setJobs(data);
+        const res = await fetch(apiUrl);
+        const jobPage = await res.json();
+
+        setJobs(jobPage.data);
+
       } catch (error) {
         console.log('Error fetching data:', error);
       } finally {
