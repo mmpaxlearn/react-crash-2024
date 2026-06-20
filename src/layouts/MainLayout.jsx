@@ -9,7 +9,7 @@ const MainLayout = () => {
     <>
       <Navbar />
       <div className='h-20' />
-      <ToastContainer /> // Not working properly - somehow it quickly disappears.
+      <ToastContainer /> {/* // Not working properly - somehow it quickly disappears. */}
       <Outlet />
     </>
   );
