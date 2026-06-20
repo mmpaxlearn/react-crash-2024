@@ -53,8 +53,7 @@ const JobPage = () => {
                 <p className="mb-4">{job.salary}</p>
               </div>
             </main>
-
-            {/* <!-- Sidebar --> */}
+ 
             <aside>
               <div className="bg-white shadow-md p-6 rounded-lg">
                 <h3 className="mb-6 font-bold text-xl">Company Info</h3>
@@ -78,7 +77,6 @@ const JobPage = () => {
                 <p className="bg-indigo-100 my-2 p-2 font-bold">{job.company.contactPhone}</p>
               </div>
 
-              {/* <!-- Manage --> */}
               <div className="bg-white shadow-md mt-6 p-6 rounded-lg">
                 <h3 className="mb-6 font-bold text-xl">Manage Job</h3>
                 <Link
