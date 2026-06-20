@@ -11,6 +11,25 @@ const AddJobPage = () => {
   const [contactEmail, setContactEmail] = useState('');
   const [contactPhone, setContactPhone] = useState('');
 
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    const newJob = {
+      title,
+      type,
+      location,
+      description,
+      salary,
+      company: {
+        name: companyName,
+        description: companyDescription,
+        contactEmail: contactEmail,
+        contactPhone: contactPhone,
+      },
+    };
+
+  }
+
   return (
     <>
       <section className="bg-indigo-50">
@@ -18,7 +37,7 @@ const AddJobPage = () => {
           <div
             className="bg-white shadow-md m-4 md:m-0 mb-4 px-6 py-8 border rounded-md"
           >
-            <form>
+            <form onSubmit={submitForm}>
               <h2 className="mb-6 font-semibold text-3xl text-center">Add Job</h2>
 
               <div className="mb-4">
