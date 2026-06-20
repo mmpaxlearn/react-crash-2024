@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const AddJobPage = () => {
+const AddJobPage = ({ addJobSubmit }) => {
   const [title, setTitle] = useState('');
   const [type, setType] = useState('Full-Time');
   const [location, setLocation] = useState('');
@@ -10,6 +11,8 @@ const AddJobPage = () => {
   const [companyDescription, setCompanyDescription] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [contactPhone, setContactPhone] = useState('');
+
+  const navigate = useNavigate(); // Initilization is required
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -28,7 +31,11 @@ const AddJobPage = () => {
       },
     };
 
-  }
+    addJobSubmit(newJob);
+
+    // useNavigate - is for redirection after form has been submitted.
+    return navigate('/jobs');
+  };
 
   return (
     <>
