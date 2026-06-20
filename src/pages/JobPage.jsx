@@ -1,11 +1,29 @@
-import { useParams, useLoaderData } from 'react-router-dom';
-import Spinner from '../components/Spinner';
+import { useParams, useLoaderData, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const JobPage = () => {
+const JobPage = ({ deleteJob }) => {
+  const navigate = useNavigate();
   const { id } = useParams(); // useParams is a hook that allows us to access the URL parameters
   const job = useLoaderData();
+
+  const showToastify = () => {
+    // Not working properly - somehow it quickly disappears.
+    toast.success('Job deleted successfully!');
+  }
+
+  const onDeleteClick = (jobId) => {
+    const confirm = window.confirm('Are you sure you want to delete this listing?');
+
+    if (!confirm) return;
+
+    deleteJob(jobId);
+
+    showToastify();
+
+    navigate('/jobs');
+  }
 
   return (
     <>
@@ -53,7 +71,7 @@ const JobPage = () => {
                 <p className="mb-4">{job.salary}</p>
               </div>
             </main>
- 
+
             <aside>
               <div className="bg-white shadow-md p-6 rounded-lg">
                 <h3 className="mb-6 font-bold text-xl">Company Info</h3>
@@ -86,6 +104,7 @@ const JobPage = () => {
                   Edit Job
                 </Link>
                 <button
+                  onClick={() => onDeleteClick(job.id)}
                   className="block bg-red-500 hover:bg-red-600 mt-4 px-4 py-2 rounded-full focus:shadow-outline focus:outline-none w-full font-bold text-white"
                 >
                   Delete Job

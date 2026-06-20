@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const AddJobPage = ({ addJobSubmit }) => {
   const [title, setTitle] = useState('');
@@ -13,6 +14,11 @@ const AddJobPage = ({ addJobSubmit }) => {
   const [contactPhone, setContactPhone] = useState('');
 
   const navigate = useNavigate(); // Initilization is required
+
+  const showToastify = () => {
+    // Not working properly - somehow it quickly disappears.
+    toast.success('Job added successfully!'); 
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -32,6 +38,8 @@ const AddJobPage = ({ addJobSubmit }) => {
     };
 
     addJobSubmit(newJob);
+
+    showToastify();
 
     // useNavigate - is for redirection after form has been submitted.
     return navigate('/jobs');

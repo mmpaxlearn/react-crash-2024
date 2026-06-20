@@ -10,10 +10,27 @@ import JobPage from './pages/JobPage';
 import AddJobPage from './pages/AddJobPage';
 
 
-
 const App = () => {
-  const addJob = (newJob) => {
-    console.log(newJob);
+  //Add new Job
+  const addJob = async (newJob) => {
+    const res = await fetch('/api/jobs', {
+      method: 'POST',
+      headers: {
+        'Contet-type': 'applicatin/json'
+      },
+      body: JSON.stringify(newJob),
+    });
+
+    return;
+  };
+
+  //Delete Job
+  const deleteJob = async (id) => {
+    const res = await fetch(`/api/jobs/${id}`, {
+      method: 'DELETE',
+    });
+
+    return;
   };
 
   const router = createBrowserRouter(
@@ -22,7 +39,7 @@ const App = () => {
         <Route index element={<HomePage />} />
         <Route path='/jobs' element={<JobsPage />} />
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
-        <Route path='/jobs/:id' element={<JobPage />} loader={jobLoader} /> // :id is a URL parameter that is a dynamic route
+        <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob} />} loader={jobLoader} /> // :id is a URL parameter that is a dynamic route
         <Route path='*' element={<NotFoundPage />} /> // '*' is a Catch-all route for 404 Not Found
       </Route>
     )
